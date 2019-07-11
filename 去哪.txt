@@ -1,0 +1,284 @@
+import java.io.File;
+import java.util.concurrent.TimeUnit;
+
+import org.apache.commons.io.FileUtils;
+import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.firefox.FirefoxDriver;
+public class test2 {
+	
+	public static void main(String[] args) throws InterruptedException, Exception {
+		
+	//调用驱动
+	WebDriver driver = new FirefoxDriver();
+	driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
+
+	//打开“去哪儿”
+	driver.manage().window().maximize();
+	driver.get("https://www.qunar.com");
+	
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	//出发地“南京”
+	driver.findElement(By.name("fromCity")).click();
+	driver.findElement(By.xpath("/html/body/div[3]/div/div[2]/div[1]/div[1]/div[2]/div[1]/div/div[2]/div[1]/form/div[2]/div[1]/div[1]/div/div[1]/div[4]/div/div[2]/div[1]/span[4]")).click();
+	driver.findElement(By.xpath("/html/body/div[3]/div/div[2]/div[1]/div[1]/div[2]/div[1]/div/div[2]/div[1]/form/div[2]/div[1]/div[1]/div/div[1]/div[4]/div/div[2]/div[5]/dl[4]/dd/ul/li[1]/a")).click();
+	Thread.sleep(1000);
+	
+	//到达地“北京”
+	driver.findElement(By.name("toCity")).sendKeys("北京(BJS)");
+	driver.findElement(By.name("toCity")).click();
+	Thread.sleep(1000);
+	
+	//出发日期2019-10-30
+	driver.findElement(By.name("fromDate")).click();
+	//向->
+	driver.findElement(By.xpath("/html/body/div[3]/div/div[2]/div[1]/div[1]/div[2]/div[1]/div/div[2]/div[1]/form/div[2]/div[2]/div[1]/div/div[2]/div/div[1]/p[1]/span")).click();
+	Thread.sleep(2000);
+	//向->
+	driver.findElement(By.xpath("/html/body/div[3]/div/div[2]/div[1]/div[1]/div[2]/div[1]/div/div[2]/div[1]/form/div[2]/div[2]/div[1]/div/div[2]/div/div[1]/p[1]/span")).click();
+	Thread.sleep(2000);
+	//向->
+	//driver.findElement(By.xpath("/html/body/div[3]/div/div[2]/div[1]/div[1]/div[2]/div[1]/div/div[2]/div[1]/form/div[2]/div[2]/div[1]/div/div[2]/div/div[1]/p[1]/span")).click();
+	//Thread.sleep(2000);
+	
+
+	//定位2019-10-30正常界面
+	driver.findElement(By.xpath("//*[@id=\"js_flight_domestic_searchbox\"]/div[2]/div[2]/div[1]/div/div[2]/div/div[2]/div/div[4]/div[3]/table/tbody/tr[5]/td[3]/div/span")).click();
+	Thread.sleep(2000);
+	
+	//点击“立即搜索”
+	driver.findElement(By.className("button-search")).click();
+	Thread.sleep(3000);
+	
+	//筛选出“直飞”
+	driver.findElement(By.xpath("/html/body/div[3]/div/div[3]/div[1]/div/div[3]/div[2]/div[2]/div/div/div[1]/div[2]/div[4]/label")).click();
+	Thread.sleep(3000);
+	
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	
+	//回到“去哪儿首页”
+	driver.get("https://www.qunar.com");
+	//driver.navigate().back();
+	Thread.sleep(3000);
+	
+	
+	//点击“机票”
+	driver.findElement(By.xpath("//*[@id=\"__link_flight__\"]/span/b")).click();
+	Thread.sleep(3000);
+	
+	//点击“单选框”
+	driver.findElement(By.id("searchTypeRnd")).click();
+	Thread.sleep(2000);
+	
+	//设置返程日期2019-11-01
+	driver.findElement(By.xpath("//*[@id=\"toDate\"]")).click();
+	driver.findElement(By.xpath("//*[@id=\"toDate\"]")).sendKeys(Keys.CONTROL,"a");
+	driver.findElement(By.xpath("//*[@id=\"toDate\"]")).sendKeys("2019-11-01");
+	driver.findElement(By.xpath("//*[@id=\"toDate\"]")).click();
+
+
+
+	Thread.sleep(2000);
+	
+	//点击“搜索”
+	driver.findElement(By.className("btn_search")).click();
+	Thread.sleep(2000);
+	
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+	//回到“机票查询、特价机票、打折飞机票”页面
+	driver.get("https://flight.qunar.com/");
+	Thread.sleep(3000);
+	
+	//点击点击上方“国际.港澳台机票”链接，进入国际机票查询页面。
+	driver.findElement(By.xpath("/html/body/div[5]/div/div[2]/div/div/div/div[2]/ul/li[2]/a")).click();
+	Thread.sleep(3000);
+	
+	//出发地南京
+	driver.findElement(By.xpath("/html/body/div[5]/div/div[2]/div/div/div/div[3]/div[2]/form/div[2]/div[1]/div[1]/div/input")).click();
+	driver.findElement(By.xpath("/html/body/div[5]/div/div[2]/div/div/div/div[3]/div[2]/form/div[2]/div[1]/div[1]/div/div[2]/div/div[2]/div[1]/span[4]")).click();
+	driver.findElement(By.xpath("/html/body/div[5]/div/div[2]/div/div/div/div[3]/div[2]/form/div[2]/div[1]/div[1]/div/div[2]/div/div[2]/div[5]/dl[4]/dd/ul/li[1]/a")).click();
+	Thread.sleep(2000);
+	
+	//目的地美国洛杉矶
+	driver.findElement(By.xpath("/html/body/div[5]/div/div[2]/div/div/div/div[3]/div[2]/form/div[2]/div[1]/div[2]/div/div[1]/div[1]")).click();
+	driver.findElement(By.xpath("/html/body/div[5]/div/div[2]/div/div/div/div[3]/div[2]/form/div[2]/div[1]/div[2]/div/div[2]/div/div[2]/div[1]/span[3]")).click();
+	driver.findElement(By.xpath("/html/body/div[5]/div/div[2]/div/div/div/div[3]/div[2]/form/div[2]/div[1]/div[2]/div/div[2]/div/div[2]/div[4]/dl[1]/dd/ul/li[2]/a")).click();
+	Thread.sleep(2000);
+	
+	//去程日期为 11 月 9 日
+	driver.findElement(By.cssSelector("html body div.q_pagecontainer.wide_banner div.q_pagewrap div.m-searchbox div.m-searchBox-wp div.b_fly_search div.e_search_wrap div#search_box.e_fly_search div#js_flighttype_tab_inter.ch_sch_form form#ifsForm div#one-round-ser.one-round-ser div.crl_sp_date div.controls div.qcbox.qdate.fromD.qdate_s input#fromDate.textbox")).click();
+	Thread.sleep(2000);
+	driver.findElement(By.xpath("/html/body/div[5]/div/div[2]/div/div/div/div[3]/div[2]/form/div[2]/div[2]/div[1]/div/div[2]/div/div/div[1]/p[1]")).click();
+	Thread.sleep(2000);
+	driver.findElement(By.xpath("/html/body/div[5]/div/div[2]/div/div/div/div[3]/div[2]/form/div[2]/div[2]/div[1]/div/div[2]/div/div/div[1]/p[1]")).click();
+	Thread.sleep(2000);
+	driver.findElement(By.xpath("/html/body/div[5]/div/div[2]/div/div/div/div[3]/div[2]/form/div[2]/div[2]/div[1]/div/div[2]/div/div/div[1]/p[1]")).click();
+	Thread.sleep(2000);
+	driver.findElement(By.xpath("//*[@id=\"one-round-ser\"]/div[2]/div[1]/div/div[2]/div/div/div[2]/div/div[5]/div[3]/table/tbody/tr[2]/td[6]/div")).click();
+	Thread.sleep(2000);
+	/*
+	driver.findElement(By.cssSelector("html body div.q_pagecontainer.wide_banner div.q_pagewrap div.m-searchbox div.m-searchBox-wp div.b_fly_search div.e_search_wrap div#search_box.e_fly_search div#js_flighttype_tab_inter.ch_sch_form form#ifsForm div#one-round-ser.one-round-ser div.crl_sp_date div.controls div.qcbox.qdate.fromD.qdate_s input#fromDate.textbox")).click();
+	driver.findElement(By.cssSelector("html body div.q_pagecontainer.wide_banner div.q_pagewrap div.m-searchbox div.m-searchBox-wp div.b_fly_search div.e_search_wrap div#search_box.e_fly_search div#js_flighttype_tab_inter.ch_sch_form form#ifsForm div#one-round-ser.one-round-ser div.crl_sp_date div.controls div.qcbox.qdate.fromD.qdate_s input#fromDate.textbox")).sendKeys(Keys.CONTROL,"a");
+	driver.findElement(By.cssSelector("html body div.q_pagecontainer.wide_banner div.q_pagewrap div.m-searchbox div.m-searchBox-wp div.b_fly_search div.e_search_wrap div#search_box.e_fly_search div#js_flighttype_tab_inter.ch_sch_form form#ifsForm div#one-round-ser.one-round-ser div.crl_sp_date div.controls div.qcbox.qdate.fromD.qdate_s input#fromDate.textbox")).sendKeys("2019-11-09");
+	driver.findElement(By.cssSelector("html body div.q_pagecontainer.wide_banner div.q_pagewrap div.m-searchbox div.m-searchBox-wp div.b_fly_search div.e_search_wrap div#search_box.e_fly_search div#js_flighttype_tab_inter.ch_sch_form form#ifsForm div#one-round-ser.one-round-ser div.crl_sp_date div.controls div.qcbox.qdate.fromD.qdate_s input#fromDate.textbox")).click();
+	Thread.sleep(2000);
+*/
+	
+	//返程日期为 11 月 14 日。
+	driver.findElement(By.xpath("//*[@id=\"one-round-ser\"]/div[2]/div[3]/div/div[2]/div/div/div[2]/div/div[1]/div[3]/table/tbody/tr[3]/td[4]/div/span")).click();
+	Thread.sleep(3000);
+	
+	/*driver.findElement(By.xpath("//*[@id=\"toDate\"]")).click();
+	driver.findElement(By.xpath("//*[@id=\"toDate\"]")).sendKeys(Keys.CONTROL,"a");
+	driver.findElement(By.xpath("//*[@id=\"toDate\"]")).sendKeys("2019-11-14");
+	driver.findElement(By.xpath("//*[@id=\"toDate\"]")).click();
+	Thread.sleep(2000);
+*/
+	//点击搜索
+	driver.findElement(By.xpath("/html/body/div[5]/div/div[2]/div/div/div/div[3]/div[2]/form/div[6]/button")).click();
+	Thread.sleep(3000);
+
+	
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+	//再次回到“机票查询、特价机票、打折飞机票”页面进行国际机票查询。出发地、到达地、去程日期不变，，
+	//同时设置成人数量为 2、儿童数量为 1。到达搜索结果页面后，通	过代码判断“直飞”标签在
+	//网页是否存在／显示。若不存在或不显示，说明该往返日期无直达航班，在控制
+	//台给出“无直达航班”的提示；否则给出“有直达航班”的提示。
+	driver.navigate().back();
+	Thread.sleep(2000);
+	
+	//成人2
+	//driver.findElement(By.cssSelector("html body div.q_pagecontainer.wide_banner div.q_pagewrap div.m-searchbox div.m-searchBox-wp div.b_fly_search div.e_search_wrap div#search_box.e_fly_search div#js_flighttype_tab_inter.ch_sch_form form#ifsForm div#one-round-ser.one-round-ser div.crl_sp_city div.controls.passnum div#adtnum_box.yselector div#adt_num.yselector_box input")).click();
+	driver.findElement(By.xpath("/html/body/div[5]/div/div[2]/div/div/div/div[3]/div[2]/form/div[2]/div[1]/div[3]/div[1]/div[1]/input")).click();
+	Thread.sleep(1000);
+	driver.findElement(By.xpath("/html/body/div[5]/div/div[2]/div/div/div/div[3]/div[2]/form/div[2]/div[1]/div[3]/div[1]/div[2]/ul/li[2]")).click();
+	Thread.sleep(2000);
+	
+	//儿童1
+	driver.findElement(By.xpath("/html/body/div[5]/div/div[2]/div/div/div/div[3]/div[2]/form/div[2]/div[1]/div[3]/div[2]/div[1]/input")).click();
+	Thread.sleep(1000);
+	driver.findElement(By.xpath("/html/body/div[5]/div/div[2]/div/div/div/div[3]/div[2]/form/div[2]/div[1]/div[3]/div[2]/div[2]/ul/li[2]")).click();
+	Thread.sleep(2000);
+	
+	//将返程日期设置为 11 月 15 日（cssSelector）
+	driver.findElement(By.cssSelector("html body div.q_pagecontainer.wide_banner div.q_pagewrap div.m-searchbox div.m-searchBox-wp div.b_fly_search div.e_search_wrap div#search_box.e_fly_search div#js_flighttype_tab_inter.ch_sch_form form#ifsForm div#one-round-ser.one-round-ser div.crl_sp_date div.controls.js_arrivalDateDiv div.qcbox.qdate.toD.qdate_s input#toDate.textbox")).click();
+	Thread.sleep(2000);
+	driver.findElement(By.xpath("//*[@id=\"one-round-ser\"]/div[2]/div[3]/div/div[2]/div/div/div[2]/div/div[1]/div[3]/table/tbody/tr[3]/td[5]/div/span")).click();
+	//不需要这一步driver.findElement(By.xpath("//*[@id=\"one-round-ser\"]/div[2]/div[3]/div/div[2]/div/div/div[2]/div/div[1]/div[3]/table/tbody/tr[3]/td[5]/div/span")).click();
+	Thread.sleep(3000);
+	
+	//点击搜索
+	driver.findElement(By.xpath("/html/body/div[5]/div/div[2]/div/div/div/div[3]/div[2]/form/div[6]/button")).click();
+	Thread.sleep(3000);
+	
+	//判断有无“直飞”标签
+	try {
+		driver.findElement(By.id("fl_direct"));
+		System.out.println("有直达航班");
+	}catch(Exception e) {
+		System.out.println("无直达航班");
+	}
+	Thread.sleep(3000);
+	
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	
+	//再次回到“机票查询、特价机票、打折飞机票”页面进行国际机票查询。
+	driver.navigate().back();
+	Thread.sleep(3000);
+	
+	//点击“多程（含缺口）”单选框，第一程为南京至洛杉矶 11 月 9 日，第二程为洛杉矶至上海 11 月 15 日。点击“搜索”按钮后可到达搜索结果页面。
+	driver.findElement(By.xpath("//*[@id=\"searchTypeMulti\"]")).click();
+	Thread.sleep(3000);
+	
+	//出发地：南京
+	driver.findElement(By.xpath("/html/body/div[5]/div/div[2]/div/div/div/div[3]/div[2]/form/div[3]/div[1]/div[1]/div[1]/div[2]/div/input")).sendKeys("南京(NKG)");
+	driver.findElement(By.xpath("/html/body/div[5]/div/div[2]/div/div/div/div[3]/div[2]/form/div[3]/div[1]/div[1]/div[1]/div[2]/div/input")).click();
+	Thread.sleep(3000);
+	
+	//目的地：洛杉矶
+	driver.findElement(By.xpath("/html/body/div[5]/div/div[2]/div/div/div/div[3]/div[2]/form/div[3]/div[1]/div[1]/div[1]/div[3]/div/input")).sendKeys("洛杉矶(LAX)");
+	driver.findElement(By.xpath("/html/body/div[5]/div/div[2]/div/div/div/div[3]/div[2]/form/div[3]/div[1]/div[1]/div[1]/div[3]/div/input")).click();
+	Thread.sleep(3000);
+
+	
+	//第一程为南京至洛杉矶 11 月 9 日，
+	driver.findElement(By.xpath("/html/body/div[5]/div/div[2]/div/div/div/div[3]/div[2]/form/div[3]/div[1]/div[1]/div[2]/div/input")).click();
+	driver.findElement(By.xpath("/html/body/div[5]/div/div[2]/div/div/div/div[3]/div[2]/form/div[3]/div[1]/div[1]/div[2]/div/input")).sendKeys(Keys.CONTROL, "a");
+	driver.findElement(By.xpath("/html/body/div[5]/div/div[2]/div/div/div/div[3]/div[2]/form/div[3]/div[1]/div[1]/div[2]/div/input")).sendKeys("2019-11-09");
+	driver.findElement(By.xpath("/html/body/div[5]/div/div[2]/div/div/div/div[3]/div[2]/form/div[3]/div[1]/div[1]/div[2]/div/input")).click();
+	Thread.sleep(3000);
+	
+	 //出发地：洛杉矶
+	driver.findElement(By.xpath("/html/body/div[5]/div/div[2]/div/div/div/div[3]/div[2]/form/div[3]/div[1]/div[2]/div[1]/div[2]/div/input")).sendKeys("洛杉矶(LAX)");
+	driver.findElement(By.xpath("/html/body/div[5]/div/div[2]/div/div/div/div[3]/div[2]/form/div[3]/div[1]/div[2]/div[1]/div[2]/div/input")).click();
+	Thread.sleep(3000);
+	
+	//目的地：上海
+	driver.findElement(By.xpath("/html/body/div[5]/div/div[2]/div/div/div/div[3]/div[2]/form/div[3]/div[1]/div[2]/div[1]/div[3]/div/input")).sendKeys("上海(SHA)");
+	driver.findElement(By.xpath("/html/body/div[5]/div/div[2]/div/div/div/div[3]/div[2]/form/div[3]/div[1]/div[2]/div[1]/div[3]/div/input")).click();
+	Thread.sleep(3000);
+	
+	//第二程为洛杉矶至上海 11 月 15 日。
+	driver.findElement(By.xpath("/html/body/div[5]/div/div[2]/div/div/div/div[3]/div[2]/form/div[3]/div[1]/div[2]/div[2]/div/input")).click();
+	driver.findElement(By.xpath("/html/body/div[5]/div/div[2]/div/div/div/div[3]/div[2]/form/div[3]/div[1]/div[2]/div[2]/div/input")).sendKeys(Keys.CONTROL, "a");
+	driver.findElement(By.xpath("/html/body/div[5]/div/div[2]/div/div/div/div[3]/div[2]/form/div[3]/div[1]/div[2]/div[2]/div/input")).sendKeys("2019-11-15");
+	driver.findElement(By.xpath("/html/body/div[5]/div/div[2]/div/div/div/div[3]/div[2]/form/div[3]/div[1]/div[2]/div[2]/div/input")).click();
+	Thread.sleep(3000);
+	
+	//点击“搜索”
+	//错的driver.findElement(By.xpath("//*[@id=\"js_submit_module\"]/div/span/button")).click();
+	//错的driver.findElement(By.xpath("/html/body/div[3]/div/div[2]/div[1]/div[1]/div[2]/div[1]/div/div[2]/div[2]/form/div[6]/div/span/button")).click();
+	driver.findElement(By.xpath("/html/body/div[5]/div/div[2]/div/div/div/div[3]/div[2]/form/div[6]/button")).click();
+	Thread.sleep(3000);
+	
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	
+	//点击第一个报价的“选择”按钮
+    driver.findElement(By.xpath("/html/body/div[4]/div/div[3]/div[1]/div[5]/div[2]/div[2]/div[4]/div[1]/div/div[4]/div/a/span/b")).click();
+	//driver.findElement(By.cssSelector("html body div#j-pagecontainer.q_pagecontainer div.q_pagewrap div.q_page div.l_lside div#list-box.m-cheng-dtl div.js-fl-box div#js-avt-lst.ch-bd div.m-avt-wrap.js-avt-wrap div.js-item div.m-avt.m-avt-v1 div.c6 div.a_booking a.btn.js-select-pr span")).click();
+	Thread.sleep(3000);
+	//航空公司中选择东方航空
+	WebElement webElement = driver.findElement(By.cssSelector("body"));
+	webElement.click(); // 有的时候必须点击一下，下拉才能生效（有的网站是这样，原因未找到）
+	//小幅度ARROW_DOWN
+	webElement.sendKeys(Keys.ARROW_DOWN);
+	Thread.sleep(3000);
+	
+	driver.findElement(By.xpath("/html/body/div[4]/div/div[3]/div[1]/div[5]/div[2]/div[1]/div[1]/div[2]/div/div[1]")).click();
+	Thread.sleep(3000);
+	//driver.findElement(By.xpath("/html/body/div[4]/div/div[3]/div[1]/div[5]/div[2]/div[1]/div[1]/div[2]/div/div[2]/ul[2]/li[6]/label")).click();
+	//driver.findElement(By.xpath("//*[@class=\"list\"']/ul[position()>0 and position()<4/li[position()>0 and position()<8]//*[text()='东方航空']")).click();
+	driver.findElement(By.xpath("//*[@class=\"list\"]/ul[position()>0 and position()<5]/li[position()>0 and position()<9]//*[text()='东方航空']")).click();
+	Thread.sleep(3000);
+	
+	//列在第一位的第二程航班，点击"选择"按钮
+	driver.findElement(By.xpath("/html/body/div[4]/div/div[3]/div[1]/div[5]/div[2]/div[2]/div[4]/div[1]/div/div[7]/div/a/span/b")).click();
+	Thread.sleep(3000);
+	
+	//所有报价中的选择列在第一位的报价，点击对应的“预定”按钮
+	driver.findElement(By.xpath("/html/body/div[4]/div/div[3]/div[1]/div[4]/div[2]/div[4]/div/div[2]/div/div[6]/div[3]/div/div/div[1]/a")).click();
+	//driver.findElement(By.xpath("/html/body/div[4]/div/div[3]/div[1]/div[4]/div[2]/div[4]/div/div[2]/div/div[6]/div[3]/div/div/div[1]/a"))
+	Thread.sleep(20000);
+	
+	//driver.get("https://pangolin.flight.qunar.com/flightns/pangolin/booking?bk=816472adb2d349179234d0abaa951456%5E8338af7d14b940f58eadfc89de08f11f&qt=9dd13db8e2bd02mA%5E9dd13db8e2be02mA&bksource=&type=1");
+	driver.get("https://pangolin.flight.qunar.com/flightns/pangolin/booking?bk=06eea0393af9435c973e70e90a47a65b%5Ec794fe1d8fe34d69870f2efba044a8ad&qt=9fd9b41d163d02mA%5E9fd9b41d163e02mA&bksource=&type=1");
+	Thread.sleep(20000);
+	//https://pangolin.flight.qunar.com/flightns/pangolin/booking?bk=f15d319971d4476f9639d9d30d0f1570%5E19e203e8c65a419796a98bf58573d658&qt=9fd41165040802mA%5E9fd41165040902mA&bksource=&type=1
+	
+	//对跳转出的界面截图
+	File srcFile = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
+	FileUtils.copyFileToDirectory(srcFile, new File("C:\\屏幕截图",".png"));
+	Thread.sleep(20000);
+	
+	//关闭浏览器
+	driver.close();	        }
+}
